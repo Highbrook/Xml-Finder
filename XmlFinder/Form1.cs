@@ -41,20 +41,28 @@ namespace XmlFinder
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            DirectoryInfo dir = new DirectoryInfo(folderPathTextBox.Text);
-            FileInfo[] dirFilesCount = dir.GetFiles("*");
-
-            foreach (var fileName in dirFilesCount)
+            try
             {
-                resultListView.Items.Add(fileName.ToString());
+                resultListView.Items.Clear();
+                DirectoryInfo dir = new DirectoryInfo(folderPathTextBox.Text);
+                FileInfo[] dirFilesCount = dir.GetFiles("*");
+
+                foreach (var fileName in dirFilesCount)
+                {
+                    resultListView.Items.Add(fileName.ToString());
+                }
+
+                foreach (var item in resultListView.Items)
+                {
+                    this.allItems.Add(item.ToString());
+                }
             }
-
-            foreach (var item in resultListView.Items)
+            catch (Exception)
             {
-                this.allItems.Add(item.ToString());
+                MessageBox.Show("Incorrect input for search directory"); ;
             }
         }
-        // TODO Add windows explorer opening when you select a file and navigate to its location
+        // Opens the file explorer and navigates to the selected file and highlights it
         private void resultListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (resultListView.SelectedItems.Count == 0)
@@ -62,22 +70,8 @@ namespace XmlFinder
             else
             {
                 string selected = resultListView.SelectedItems[0].Text;
-                OpenFileDialog dialog = new OpenFileDialog();
-                DialogResult dialogResult = MessageBox.Show(selected);
-            }
-        }
-
-        private void OpenFolder(string folderPath)
-        {
-            if (Directory.Exists(folderPath))
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo(folderPath, "explorer.exe");
-                
-                Process.Start(startInfo);
-            }
-            else
-            {
-                MessageBox.Show(string.Format("{0} Directory does not exist!", folderPath));
+                string argument = "/select, \"" + folderPathTextBox.Text + @"\" + selected;
+                System.Diagnostics.Process.Start("explorer.exe", argument);
             }
         }
     }
