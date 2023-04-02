@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Xml;
 
 namespace XmlFinder
 {
@@ -47,19 +48,48 @@ namespace XmlFinder
                 DirectoryInfo dir = new DirectoryInfo(folderPathTextBox.Text);
                 FileInfo[] dirFilesCount = dir.GetFiles("*");
 
-                foreach (var fileName in dirFilesCount)
+                // TODO Fix listing of items 4 times in a row
+                // TODO Fix error handling
+                // TODO Fix reading xml files
+                string keyword = keywordTextBox.Text;
+                if (keyword != null)
                 {
-                    resultListView.Items.Add(fileName.ToString());
+                    foreach (var fileName in dirFilesCount)
+                    {
+                        XmlTextReader reader = new XmlTextReader(dir.ToString() + @"\" + fileName);
+                        while (reader.Read())
+                        {
+                            Console.WriteLine(reader.Value);
+                            if (reader.Value.Contains(keyword))
+                            {
+                                resultListView.Items.Add(fileName.ToString());
+                            }
+                        }
+                    }
+
+                    foreach (var item in resultListView.Items)
+                    {
+                        this.allItems.Add(item.ToString());
+                    }
+                }
+                else if (keyword == null)
+                {
+                    MessageBox.Show("Incorrect input for search keyword");
                 }
 
-                foreach (var item in resultListView.Items)
-                {
-                    this.allItems.Add(item.ToString());
-                }
+                //foreach (var fileName in dirFilesCount)
+                //{
+                //    resultListView.Items.Add(fileName.ToString());
+                //}
+
+                //foreach (var item in resultListView.Items)
+                //{
+                //    this.allItems.Add(item.ToString());
+                //}
             }
             catch (Exception)
             {
-                MessageBox.Show("Incorrect input for search directory"); ;
+                MessageBox.Show("Incorrect data input");
             }
         }
         // Opens the file explorer and navigates to the selected file and highlights it
