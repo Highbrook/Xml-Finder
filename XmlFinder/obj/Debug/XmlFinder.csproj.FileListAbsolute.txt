@@ -14,9 +14,10 @@ D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\bin\Debug\XmlFind
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\bin\Debug\XmlFinder.pdb
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.csproj.AssemblyReference.cache
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.csproj.SuggestedBindingRedirects.cache
-D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.Form1.resources
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.Properties.Resources.resources
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.csproj.GenerateResource.cache
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.csproj.CoreCompileInputs.cache
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.exe
 D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.pdb
+D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.MainForm.resources
+D:\UnityProjects\Git\FIle-Mover\XmlFinder\Xml-Finder\XmlFinder\obj\Debug\XmlFinder.ReplaceDialogForm.resources

@@ -9,16 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 //using System.Xml;
-//using System.Text.RegularExpressions;
 
 namespace XmlFinder
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private FolderBrowserDialog folderBrowserDialog;
         private List<string> allItems = new List<string>();
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -59,9 +59,10 @@ namespace XmlFinder
             }
         }
 
+        // Searches for the keyword in all files in the directory
         private void searchKeywordInFiles(string keyword, DirectoryInfo dir, FileInfo[] dirFilesCount)
         {
-            if (keyword != null)
+            if (keyword != null && keyword != "")
             {
                 foreach (var fileName in dirFilesCount)
                 {
@@ -70,7 +71,8 @@ namespace XmlFinder
                     while (line != null)
                     {
                         Console.WriteLine(line);
-                        if (line.Contains(keyword.ToLower()))
+                        Match m = Regex.Match(line, keyword, RegexOptions.IgnoreCase);
+                        if (m.Success)
                         {
                             resultListView.Items.Add(fileName.ToString());
                             line = sr.ReadLine();
@@ -88,7 +90,7 @@ namespace XmlFinder
                     this.allItems.Add(item.ToString());
                 }
             }
-            else if (keyword == null)
+            else
             {
                 MessageBox.Show("Incorrect input for search keyword");
             }
@@ -105,6 +107,12 @@ namespace XmlFinder
                 string argument = "/select, \"" + folderPathTextBox.Text + @"\" + selected;
                 System.Diagnostics.Process.Start("explorer.exe", argument);
             }
+        }
+
+        private void replaceDialogWindowButton_Click(object sender, EventArgs e)
+        {
+            ReplaceDialogForm replaceDialogForm = new ReplaceDialogForm();
+            replaceDialogForm.ShowDialog();
         }
     }
 }
