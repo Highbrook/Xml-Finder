@@ -44,16 +44,20 @@
             this.replaceAllCheckBox.TabIndex = 20;
             this.replaceAllCheckBox.Text = "Replace in ALL files";
             this.replaceAllCheckBox.UseVisualStyleBackColor = true;
+            this.replaceAllCheckBox.CheckedChanged += new System.EventHandler(this.replaceAllCheckBox_CheckedChanged);
             // 
             // replaceSelectedCheckBox
             // 
             this.replaceSelectedCheckBox.AutoSize = true;
+            this.replaceSelectedCheckBox.Checked = true;
+            this.replaceSelectedCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.replaceSelectedCheckBox.Location = new System.Drawing.Point(15, 317);
             this.replaceSelectedCheckBox.Name = "replaceSelectedCheckBox";
             this.replaceSelectedCheckBox.Size = new System.Drawing.Size(138, 17);
             this.replaceSelectedCheckBox.TabIndex = 21;
             this.replaceSelectedCheckBox.Text = "Replace in Selected file";
             this.replaceSelectedCheckBox.UseVisualStyleBackColor = true;
+            this.replaceSelectedCheckBox.CheckedChanged += new System.EventHandler(this.replaceSelectedCheckBox_CheckedChanged);
             // 
             // replaceButton
             // 
