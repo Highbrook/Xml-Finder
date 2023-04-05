@@ -19,14 +19,6 @@ namespace XmlFinder
         private FolderBrowserDialog folderBrowserDialog;
         private List<string> allItems = new List<string>();
 
-        private string replacementKeyword;
-        private bool allOrSegment;
-        public MainForm(bool allOrSegment, string replacementKeyword)
-        {
-            this.allOrSegment = allOrSegment;
-            this.replacementKeyword = replacementKeyword;
-        }
-
         public MainForm()
         {
             InitializeComponent();
@@ -120,6 +112,7 @@ namespace XmlFinder
         }
 
         // Opens the file explorer and navigates to the selected file and highlights it
+        // TODO Add selection of individual files and double click on file to open its location
         private void resultListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (resultListView.SelectedItems.Count == 0)
@@ -132,22 +125,17 @@ namespace XmlFinder
             }
         }
 
-        // TODO return information on which checkbox is checked
+        // Summons the ReplaceDialogForm.cs
         private void replaceDialogWindowButton_Click(object sender, EventArgs e)
         {
             ReplaceDialogForm replaceDialogForm = new ReplaceDialogForm();
             replaceDialogForm.ShowDialog();
         }
 
+        // Works with data returned from the replacement dialog form
         public static void replaceKeyword(bool replaceState, string replaceText)
         {
             Console.WriteLine("Data returned " + replaceState + " with text: " + replaceText);
         }
     }
 }
-
-
-//{
-//    Arguments = folderPath,
-//    FileName = "explorer.exe";
-//};
