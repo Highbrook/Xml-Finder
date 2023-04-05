@@ -28,36 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.replaceAllCheckBox = new System.Windows.Forms.CheckBox();
-            this.replaceSelectedCheckBox = new System.Windows.Forms.CheckBox();
             this.replaceButton = new System.Windows.Forms.Button();
             this.replaceTextBox = new System.Windows.Forms.TextBox();
             this.replaceLabel = new System.Windows.Forms.Label();
+            this.replaceSelectedRadioButton = new System.Windows.Forms.RadioButton();
+            this.replaceAllRadioButton = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
-            // 
-            // replaceAllCheckBox
-            // 
-            this.replaceAllCheckBox.AutoSize = true;
-            this.replaceAllCheckBox.Location = new System.Drawing.Point(15, 340);
-            this.replaceAllCheckBox.Name = "replaceAllCheckBox";
-            this.replaceAllCheckBox.Size = new System.Drawing.Size(120, 17);
-            this.replaceAllCheckBox.TabIndex = 20;
-            this.replaceAllCheckBox.Text = "Replace in ALL files";
-            this.replaceAllCheckBox.UseVisualStyleBackColor = true;
-            this.replaceAllCheckBox.CheckedChanged += new System.EventHandler(this.replaceAllCheckBox_CheckedChanged);
-            // 
-            // replaceSelectedCheckBox
-            // 
-            this.replaceSelectedCheckBox.AutoSize = true;
-            this.replaceSelectedCheckBox.Checked = true;
-            this.replaceSelectedCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.replaceSelectedCheckBox.Location = new System.Drawing.Point(15, 317);
-            this.replaceSelectedCheckBox.Name = "replaceSelectedCheckBox";
-            this.replaceSelectedCheckBox.Size = new System.Drawing.Size(138, 17);
-            this.replaceSelectedCheckBox.TabIndex = 21;
-            this.replaceSelectedCheckBox.Text = "Replace in Selected file";
-            this.replaceSelectedCheckBox.UseVisualStyleBackColor = true;
-            this.replaceSelectedCheckBox.CheckedChanged += new System.EventHandler(this.replaceSelectedCheckBox_CheckedChanged);
             // 
             // replaceButton
             // 
@@ -68,6 +44,7 @@
             this.replaceButton.TabIndex = 19;
             this.replaceButton.Text = "Replace";
             this.replaceButton.UseVisualStyleBackColor = true;
+            this.replaceButton.Click += new System.EventHandler(this.replaceButton_Click);
             // 
             // replaceTextBox
             // 
@@ -85,13 +62,37 @@
             this.replaceLabel.TabIndex = 17;
             this.replaceLabel.Text = "Replace with:";
             // 
+            // replaceSelectedRadioButton
+            // 
+            this.replaceSelectedRadioButton.AutoSize = true;
+            this.replaceSelectedRadioButton.Location = new System.Drawing.Point(15, 317);
+            this.replaceSelectedRadioButton.Name = "replaceSelectedRadioButton";
+            this.replaceSelectedRadioButton.Size = new System.Drawing.Size(137, 17);
+            this.replaceSelectedRadioButton.TabIndex = 22;
+            this.replaceSelectedRadioButton.Text = "Replace in Selected file";
+            this.replaceSelectedRadioButton.UseVisualStyleBackColor = true;
+            this.replaceSelectedRadioButton.CheckedChanged += new System.EventHandler(this.replaceSelectedRadioButton_CheckedChanged);
+            // 
+            // replaceAllRadioButton
+            // 
+            this.replaceAllRadioButton.AutoSize = true;
+            this.replaceAllRadioButton.Checked = true;
+            this.replaceAllRadioButton.Location = new System.Drawing.Point(15, 340);
+            this.replaceAllRadioButton.Name = "replaceAllRadioButton";
+            this.replaceAllRadioButton.Size = new System.Drawing.Size(119, 17);
+            this.replaceAllRadioButton.TabIndex = 23;
+            this.replaceAllRadioButton.TabStop = true;
+            this.replaceAllRadioButton.Text = "Replace in ALL files";
+            this.replaceAllRadioButton.UseVisualStyleBackColor = true;
+            this.replaceAllRadioButton.CheckedChanged += new System.EventHandler(this.replaceAllRadioButton_CheckedChanged);
+            // 
             // ReplaceDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 373);
-            this.Controls.Add(this.replaceAllCheckBox);
-            this.Controls.Add(this.replaceSelectedCheckBox);
+            this.Controls.Add(this.replaceAllRadioButton);
+            this.Controls.Add(this.replaceSelectedRadioButton);
             this.Controls.Add(this.replaceButton);
             this.Controls.Add(this.replaceTextBox);
             this.Controls.Add(this.replaceLabel);
@@ -103,11 +104,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox replaceAllCheckBox;
-        private System.Windows.Forms.CheckBox replaceSelectedCheckBox;
         private System.Windows.Forms.Button replaceButton;
         private System.Windows.Forms.TextBox replaceTextBox;
         private System.Windows.Forms.Label replaceLabel;
+        private System.Windows.Forms.RadioButton replaceSelectedRadioButton;
+        private System.Windows.Forms.RadioButton replaceAllRadioButton;
     }
 }

@@ -18,6 +18,15 @@ namespace XmlFinder
     {
         private FolderBrowserDialog folderBrowserDialog;
         private List<string> allItems = new List<string>();
+
+        private string replacementKeyword;
+        private bool allOrSegment;
+        public MainForm(bool allOrSegment, string replacementKeyword)
+        {
+            this.allOrSegment = allOrSegment;
+            this.replacementKeyword = replacementKeyword;
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -30,15 +39,6 @@ namespace XmlFinder
             {
                 folderPathTextBox.Text = folderBrowserDialog.SelectedPath;
             }
-        }
-        private void folderPathTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -66,23 +66,7 @@ namespace XmlFinder
             {
                 foreach (var fileName in dirFilesCount)
                 {
-                    StreamReader sr = new StreamReader(dir.ToString() + @"\" + fileName);
-                    string line = sr.ReadLine();
-                    while (line != null)
-                    {
-                        Console.WriteLine(line);
-                        Match m = Regex.Match(line, keyword, RegexOptions.IgnoreCase);
-                        if (m.Success)
-                        {
-                            resultListView.Items.Add(fileName.ToString());
-                            line = sr.ReadLine();
-                        }
-                        else
-                        {
-                            line = sr.ReadLine();
-                        }
-                    }
-                    sr.Close();
+                    searchCaseInsensitive(keyword, fileName.ToString(), dir);
                 }
 
                 foreach (var item in resultListView.Items)
@@ -94,6 +78,45 @@ namespace XmlFinder
             {
                 MessageBox.Show("Incorrect input for search keyword");
             }
+        }
+
+        // Search keyword depending on if case sensitivity or insensitivity is ticked
+        private void searchCaseInsensitive(string keyword, string fileName, DirectoryInfo dir)
+        {
+            StreamReader sr = new StreamReader(dir.ToString() + @"\" + fileName);
+            string line = sr.ReadLine();
+            while (line != null)
+            {
+                if (caseInSensRadioButton.Checked == true)
+                {
+                    Console.WriteLine("Case insensitive");
+                    Match m = Regex.Match(line, keyword, RegexOptions.IgnoreCase);
+                    if (m.Success)
+                    {
+                        resultListView.Items.Add(fileName.ToString());
+                        line = sr.ReadLine();
+                    }
+                    else
+                    {
+                        line = sr.ReadLine();
+                    }
+                }
+                else if (caseSensRadioButton.Checked == true)
+                {
+                    Console.WriteLine("Case sensitive");
+                    Match m = Regex.Match(line, keyword);
+                    if (m.Success)
+                    {
+                        resultListView.Items.Add(fileName.ToString());
+                        line = sr.ReadLine();
+                    }
+                    else
+                    {
+                        line = sr.ReadLine();
+                    }
+                }
+            }
+            sr.Close();
         }
 
         // Opens the file explorer and navigates to the selected file and highlights it
@@ -110,7 +133,7 @@ namespace XmlFinder
         }
 
         // TODO return information on which checkbox is checked
-        private void replaceDialogWindowButton_Click(object sender, EventArgs e)
+        public void replaceDialogWindowButton_Click(object sender, EventArgs e)
         {
             ReplaceDialogForm replaceDialogForm = new ReplaceDialogForm();
             replaceDialogForm.ShowDialog();

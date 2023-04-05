@@ -41,6 +41,8 @@
             this.resultListView = new System.Windows.Forms.ListView();
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.caseSensRadioButton = new System.Windows.Forms.RadioButton();
+            this.caseInSensRadioButton = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +58,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.caseInSensRadioButton);
+            this.tabPage1.Controls.Add(this.caseSensRadioButton);
             this.tabPage1.Controls.Add(this.replaceDialogWindowButton);
             this.tabPage1.Controls.Add(this.searchButton);
             this.tabPage1.Controls.Add(this.folderPathButton);
@@ -76,7 +80,7 @@
             // replaceDialogWindowButton
             // 
             this.replaceDialogWindowButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.replaceDialogWindowButton.Location = new System.Drawing.Point(125, 55);
+            this.replaceDialogWindowButton.Location = new System.Drawing.Point(898, 57);
             this.replaceDialogWindowButton.Name = "replaceDialogWindowButton";
             this.replaceDialogWindowButton.Size = new System.Drawing.Size(106, 20);
             this.replaceDialogWindowButton.TabIndex = 8;
@@ -112,7 +116,6 @@
             this.folderPathTextBox.Name = "folderPathTextBox";
             this.folderPathTextBox.Size = new System.Drawing.Size(432, 20);
             this.folderPathTextBox.TabIndex = 5;
-            this.folderPathTextBox.TextChanged += new System.EventHandler(this.folderPathTextBox_TextChanged);
             // 
             // keywordTextBox
             // 
@@ -147,7 +150,6 @@
             this.label1.Size = new System.Drawing.Size(130, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Result of keyword search:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // resultListView
             // 
@@ -167,6 +169,28 @@
             // 
             this.FileName.Text = "File";
             this.FileName.Width = 990;
+            // 
+            // caseSensRadioButton
+            // 
+            this.caseSensRadioButton.AutoSize = true;
+            this.caseSensRadioButton.Location = new System.Drawing.Point(152, 55);
+            this.caseSensRadioButton.Name = "caseSensRadioButton";
+            this.caseSensRadioButton.Size = new System.Drawing.Size(95, 17);
+            this.caseSensRadioButton.TabIndex = 9;
+            this.caseSensRadioButton.Text = "Case Sensitive";
+            this.caseSensRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // caseInSensRadioButton
+            // 
+            this.caseInSensRadioButton.AutoSize = true;
+            this.caseInSensRadioButton.Checked = true;
+            this.caseInSensRadioButton.Location = new System.Drawing.Point(152, 78);
+            this.caseInSensRadioButton.Name = "caseInSensRadioButton";
+            this.caseInSensRadioButton.Size = new System.Drawing.Size(102, 17);
+            this.caseInSensRadioButton.TabIndex = 10;
+            this.caseInSensRadioButton.TabStop = true;
+            this.caseInSensRadioButton.Text = "Case Insensitive";
+            this.caseInSensRadioButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -199,6 +223,8 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ColumnHeader FileName;
         private System.Windows.Forms.Button replaceDialogWindowButton;
+        private System.Windows.Forms.RadioButton caseInSensRadioButton;
+        private System.Windows.Forms.RadioButton caseSensRadioButton;
     }
 }
 
