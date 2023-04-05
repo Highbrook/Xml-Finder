@@ -12,7 +12,6 @@ namespace XmlFinder
 {
     public partial class ReplaceDialogForm : Form
     {
-        public string teststring = "tetete";
         private bool replaceCheckState = true;
         public ReplaceDialogForm()
         {
@@ -25,6 +24,7 @@ namespace XmlFinder
             try
             {
                 Console.WriteLine(replaceCheckState);
+                MainForm.replaceKeyword(replaceCheckState, replaceTextBox.Text);
             }
             catch (Exception)
             {

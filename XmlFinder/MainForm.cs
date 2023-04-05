@@ -133,11 +133,15 @@ namespace XmlFinder
         }
 
         // TODO return information on which checkbox is checked
-        public void replaceDialogWindowButton_Click(object sender, EventArgs e)
+        private void replaceDialogWindowButton_Click(object sender, EventArgs e)
         {
             ReplaceDialogForm replaceDialogForm = new ReplaceDialogForm();
             replaceDialogForm.ShowDialog();
-            Console.WriteLine(replaceDialogForm.teststring);
+        }
+
+        public static void replaceKeyword(bool replaceState, string replaceText)
+        {
+            Console.WriteLine("Data returned " + replaceState + " with text: " + replaceText);
         }
     }
 }
