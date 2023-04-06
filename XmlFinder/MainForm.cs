@@ -47,7 +47,7 @@ namespace XmlFinder
             }
             catch (Exception)
             {
-                MessageBox.Show("Incorrect data input");
+                MessageBox.Show("Incorrect data input.");
             }
         }
 
@@ -68,7 +68,7 @@ namespace XmlFinder
             }
             else
             {
-                MessageBox.Show("Incorrect input for search keyword");
+                MessageBox.Show("Incorrect input for search keyword.");
             }
         }
 

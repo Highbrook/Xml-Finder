@@ -23,13 +23,18 @@ namespace XmlFinder
         {
             try
             {
-                Console.WriteLine(replaceCheckState);
-                MainForm.replaceKeyword(replaceCheckState, replaceTextBox.Text);
+                if (replaceTextBox.Text != "" && replaceTextBox.Text != null)
+                {
+                    MainForm.replaceKeyword(replaceCheckState, replaceTextBox.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Please input a replacement string.");
+                }
             }
             catch (Exception)
             {
-                //XmlFinder.MainForm
-                MessageBox.Show("please select one of the replacement filters.");
+                MessageBox.Show("Please select one of the replacement filters.");
             }
         }
 
