@@ -19,13 +19,30 @@ namespace XmlFinder
         }
 
 
-        private void replaceButton_Click(object sender, EventArgs e)
+        private void ReplaceButton_Click(object sender, EventArgs e)
         {
             try
             {
                 if (replaceTextBox.Text != "" && replaceTextBox.Text != null)
                 {
-                    MainForm.replaceKeyword(replaceCheckState, replaceTextBox.Text);
+                    if (replaceCheckState == true)
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you wish to replace in all files with the text " + replaceTextBox.Text + " ?","Confirmation." , MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            MainForm.ReplaceKeyword(replaceCheckState, replaceTextBox.Text);
+                        }
+                        return;
+                    }
+                    else if (replaceCheckState == false)
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you wish to replace " + MainForm.selectedFile + " with the text " + replaceTextBox.Text + " ?", "Confirmation.", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            MainForm.ReplaceKeyword(replaceCheckState, replaceTextBox.Text);
+                        }
+                        return;
+                    }
                 }
                 else
                 {
@@ -38,12 +55,12 @@ namespace XmlFinder
             }
         }
 
-        private void replaceAllRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void ReplaceAllRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             replaceCheckState = true;
         }
 
-        private void replaceSelectedRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void ReplaceSelectedRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             replaceCheckState = false;
         }

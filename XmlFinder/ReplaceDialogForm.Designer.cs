@@ -44,7 +44,7 @@
             this.replaceButton.TabIndex = 19;
             this.replaceButton.Text = "Replace";
             this.replaceButton.UseVisualStyleBackColor = true;
-            this.replaceButton.Click += new System.EventHandler(this.replaceButton_Click);
+            this.replaceButton.Click += new System.EventHandler(this.ReplaceButton_Click);
             // 
             // replaceTextBox
             // 
@@ -71,7 +71,7 @@
             this.replaceSelectedRadioButton.TabIndex = 22;
             this.replaceSelectedRadioButton.Text = "Replace in Selected file";
             this.replaceSelectedRadioButton.UseVisualStyleBackColor = true;
-            this.replaceSelectedRadioButton.CheckedChanged += new System.EventHandler(this.replaceSelectedRadioButton_CheckedChanged);
+            this.replaceSelectedRadioButton.CheckedChanged += new System.EventHandler(this.ReplaceSelectedRadioButton_CheckedChanged);
             // 
             // replaceAllRadioButton
             // 
@@ -84,7 +84,7 @@
             this.replaceAllRadioButton.TabStop = true;
             this.replaceAllRadioButton.Text = "Replace in ALL files";
             this.replaceAllRadioButton.UseVisualStyleBackColor = true;
-            this.replaceAllRadioButton.CheckedChanged += new System.EventHandler(this.replaceAllRadioButton_CheckedChanged);
+            this.replaceAllRadioButton.CheckedChanged += new System.EventHandler(this.ReplaceAllRadioButton_CheckedChanged);
             // 
             // ReplaceDialogForm
             // 
