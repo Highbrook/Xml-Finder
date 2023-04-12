@@ -16,9 +16,27 @@ namespace XmlFinder
 {
     public partial class MainForm : Form
     {
+        #region Variables
         private FolderBrowserDialog folderBrowserDialog;
-        private List<string> allItems = new List<string>();
+        public static MainForm instance;
+        public static string directoryPath;
+        public static string keywordToSearch;
+        public static List<string> allItems = new List<string>();
         public static string selectedFile;
+
+        #endregion
+
+        #region Getters and Setters
+        public System.Windows.Forms.RadioButton _caseInSensRadioButton
+        {
+            get { return caseInSensRadioButton; }
+        }
+
+        public System.Windows.Forms.RadioButton _caseSensRadioButton
+        {
+            get { return caseSensRadioButton; }
+        }
+        #endregion
 
         public MainForm()
         {
@@ -26,8 +44,6 @@ namespace XmlFinder
 
             resultListView.MouseDown += new MouseEventHandler(ResultListView_MouseDown);
             resultListView.MouseDoubleClick += new MouseEventHandler(ResultListView_MouseDoubleClick);
-
-
         }
 
         // Opens a dialog box for folder browsing
@@ -49,6 +65,7 @@ namespace XmlFinder
                 resultListView.Items.Clear();
                 DirectoryInfo dir = new DirectoryInfo(folderPathTextBox.Text);
                 FileInfo[] dirFilesCount = dir.GetFiles("*");
+                directoryPath = dir.ToString();
 
                 // TODO Fix error handling
                 string keyword = keywordTextBox.Text;
@@ -65,14 +82,10 @@ namespace XmlFinder
         {
             if (keyword != null && keyword != "")
             {
+                keywordToSearch = keyword;
                 foreach (var fileName in dirFilesCount)
                 {
                     SearchCaseInsensitive(keyword, fileName.ToString(), dir);
-                }
-
-                foreach (var item in resultListView.Items)
-                {
-                    this.allItems.Add(item.ToString());
                 }
             }
             else
@@ -95,6 +108,7 @@ namespace XmlFinder
                     if (m.Success)
                     {
                         resultListView.Items.Add(fileName.ToString());
+                        allItems.Add(dir.ToString() + @"\" + fileName.ToString());
                         line = sr.ReadLine();
                     }
                     else
@@ -123,8 +137,16 @@ namespace XmlFinder
         // Summons the ReplaceDialogForm.cs
         private void ReplaceDialogWindowButton_Click(object sender, EventArgs e)
         {
-            ReplaceDialogForm replaceDialogForm = new ReplaceDialogForm();
-            replaceDialogForm.ShowDialog();
+            if ((keywordTextBox.Text != null && keywordTextBox.Text !="") && (folderPathTextBox.Text != null && folderPathTextBox.Text != ""))
+            {
+                instance = this;
+                ReplaceDialogForm replaceDialogForm = new ReplaceDialogForm();
+                replaceDialogForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please input all required parameters.");
+            }
         }
 
         // Opens the file explorer and navigates to the selected file and highlights it when double clicked
@@ -160,37 +182,14 @@ namespace XmlFinder
             }
         }
 
-        // Works with data returned from the replacement dialog form
-        public static void ReplaceKeyword(bool replaceState, string replaceText)
-        {
-            MainForm mainForm = new MainForm();
-            if (!replaceState)
-            {
-                if (selectedFile != null && selectedFile != "")
-                {
-                    Console.WriteLine("Data returned " + replaceState + " With text: " + replaceText + " The selected file is: " + selectedFile);
-                    mainForm.BeginReplacementOfStrings(replaceText, selectedFile);
-                }
-                else
-                {
-                    MessageBox.Show("Please select one file to edit.");
-                }
 
-            }
-            else if (replaceState)
+        private void TestThingButton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(allItems.Count); 
+            foreach (var item in allItems)
             {
-                Console.WriteLine("Data returned " + replaceState + " With text: " + replaceText + " Will replace all files.");
-                mainForm.BeginReplacementOfStrings(replaceText);
+                Console.WriteLine(item);
             }
-        }
-
-        private void BeginReplacementOfStrings(string text, string file)
-        {
-            Console.WriteLine("hi");
-        }
-        private void BeginReplacementOfStrings(string text)
-        {
-            Console.WriteLine("In overloaded func");
         }
     }
 }

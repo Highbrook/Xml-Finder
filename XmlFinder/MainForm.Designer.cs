@@ -43,6 +43,7 @@
             this.resultListView = new System.Windows.Forms.ListView();
             this.FileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.TestThingButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.TestThingButton);
             this.tabPage1.Controls.Add(this.caseInSensRadioButton);
             this.tabPage1.Controls.Add(this.caseSensRadioButton);
             this.tabPage1.Controls.Add(this.replaceDialogWindowButton);
@@ -191,6 +193,16 @@
             this.FileName.Text = "File";
             this.FileName.Width = 990;
             // 
+            // TestThingButton
+            // 
+            this.TestThingButton.Location = new System.Drawing.Point(444, 72);
+            this.TestThingButton.Name = "TestThingButton";
+            this.TestThingButton.Size = new System.Drawing.Size(75, 23);
+            this.TestThingButton.TabIndex = 11;
+            this.TestThingButton.Text = "Test Thing";
+            this.TestThingButton.UseVisualStyleBackColor = true;
+            this.TestThingButton.Click += new System.EventHandler(this.TestThingButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,6 +236,7 @@
         private System.Windows.Forms.Button replaceDialogWindowButton;
         private System.Windows.Forms.RadioButton caseInSensRadioButton;
         private System.Windows.Forms.RadioButton caseSensRadioButton;
+        private System.Windows.Forms.Button TestThingButton;
     }
 }
 
